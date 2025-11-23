@@ -76,3 +76,68 @@ def detect_faces():
 
 # Create the template directory for results
 os.makedirs('static/results', exist_ok=True)
+
+# Add to imports in app.py
+from face_recognition.face_recognizer import FaceRecognizer
+import pickle
+
+# Add these routes to app.py:
+
+@app.route('/recognize-faces', methods=['GET', 'POST'])
+def recognize_faces():
+    """Face recognition page"""
+    recognizer = FaceRecognizer()
+    
+    # Try to load existing database
+    database_path = os.path.join('models', 'face_database.pkl')
+    if os.path.exists(database_path):
+        recognizer.load_database(database_path)
+    
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return render_template('recognize_faces.html', error='No file selected')
+        
+        file = request.files['file']
+        if file.filename == '':
+            return render_template('recognize_faces.html', error='No file selected')
+        
+        if file:
+            # Save uploaded file
+            filename = secure_filename(file.filename)
+            upload_path = os.path.join('datasets', 'unknown_faces', filename)
+            file.save(upload_path)
+            
+            # Recognize faces
+            recognized_faces, result_image = recognizer.recognize_faces(upload_path, draw_results=True)
+            
+            if recognized_faces:
+                # Save result image
+                output_path = os.path.join('static', 'results', f'recognized_{filename}')
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                
+                if result_image:
+                    result_image.save(output_path)
+                
+                return render_template('recognize_faces.html', 
+                                    faces=recognized_faces,
+                                    result_image=f'results/recognized_{filename}',
+                                    known_people=recognizer.known_face_names)
+            else:
+                return render_template('recognize_faces.html', error='No faces detected or recognized')
+    
+    return render_template('recognize_faces.html', known_people=recognizer.known_face_names)
+
+@app.route('/train', methods=['GET', 'POST'])
+def train_model():
+    """Train model page"""
+    if request.method == 'POST':
+        person_name = request.form.get('person_name')
+        
+        if not person_name:
+            return render_template('train.html', error='Please enter a name')
+        
+        # In a real app, you'd handle file uploads here
+        return render_template('train.html', 
+                             success=f'Training interface for {person_name} would be implemented here')
+    
+    return render_template('train.html')
