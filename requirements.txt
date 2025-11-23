@@ -1,0 +1,27 @@
+# Core Computer Vision - Latest Stable Versions
+opencv-python==4.8.1.78
+face-recognition==1.3.0
+dlib==19.24.2
+numpy==1.24.3
+pillow==10.0.1
+
+# Web Framework - Latest Stable
+flask==2.3.3
+flask-cors==4.0.0
+
+# Utilities - Latest Stable
+scikit-learn==1.3.0
+matplotlib==3.7.2
+seaborn==0.12.2
+jupyter==1.0.0
+pandas==2.0.3
+
+# Additional CV tools - Latest Stable
+cmake==3.27.5
+scipy==1.11.2
+joblib==1.3.2
+requests==2.31.0
+
+# Development tools
+ipython==8.15.0
+notebook==7.0.2

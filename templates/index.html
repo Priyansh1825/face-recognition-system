@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Face Recognition System</h1>
+            <p>Advanced Computer Vision for Face Detection and Recognition</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>🔍 Face Detection</h3>
+                <p>Detect multiple faces in images and video streams with high accuracy</p>
+            </div>
+            <div class="feature-card">
+                <h3>👤 Face Recognition</h3>
+                <p>Identify individuals by comparing faces with known database</p>
+            </div>
+            <div class="feature-card">
+                <h3>📹 Real-time Processing</h3>
+                <p>Live face recognition using webcam with optimized performance</p>
+            </div>
+        </div>
+
+        <div>
+            <button class="cta-button" onclick="alert('Feature coming soon!')">
+                🎥 Start Webcam
+            </button>
+            <button class="cta-button" onclick="alert('Feature coming soon!')">
+                📸 Upload Image
+            </button>
+        </div>
+    </div>
+</body>
+</html>
