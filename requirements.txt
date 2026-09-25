@@ -25,3 +25,9 @@ requests==2.31.0
 # Development tools
 ipython==8.15.0
 notebook==7.0.2
+
+# First, capture training images for known people
+# python notebooks/capture_training_images.py
+
+# Test the recognition system
+# python notebooks/test_face_recognition.py
