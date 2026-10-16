@@ -42,4 +42,6 @@ desktop.ini
 
 # Custom Project Ignores
 datasets/
+models/*.pkl
+static/results/
 .venv/

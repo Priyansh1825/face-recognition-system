@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.append('..')
 
-from face_recognition.face_recognizer import FaceRecognizer
+from face_recognition_module.face_recognizer import FaceRecognizer
 import matplotlib.pyplot as plt
 
 def test_face_recognition():

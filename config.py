@@ -26,4 +26,7 @@ FACE_DETECTION_CONFIDENCE = 0.6
 for directory in [KNOWN_FACES_DIR, UNKNOWN_FACES_DIR, TRAINING_DIR, MODELS_DIR]:
     os.makedirs(directory, exist_ok=True)
 
-print("✅ Configuration loaded successfully!")
+try:
+    print("✅ Configuration loaded successfully!")
+except UnicodeEncodeError:
+    print("[OK] Configuration loaded successfully!")

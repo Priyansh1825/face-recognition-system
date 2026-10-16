@@ -5,59 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Recognition System</title>
     <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --border-card: rgba(255, 255, 255, 0.1);
+            --accent-primary: #6366f1;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, var(--bg-primary) 70%);
+            color: var(--text-light);
+            min-height: 100vh;
         }
+
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
         }
+
         .header {
             margin-bottom: 50px;
         }
+
+        .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
         .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin: 0 0 15px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
+
         .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
+
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin: 50px 0;
+            text-align: left;
         }
+
         .feature-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
             padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.25s ease, border-color 0.25s ease;
         }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
         .feature-card h3 {
-            margin-top: 0;
-            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #ffffff;
         }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 20px 0;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: #818cf8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
         .cta-button {
-            background: #ff6b6b;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
             cursor: pointer;
-            margin: 10px;
-            transition: transform 0.3s ease;
+            transition: all 0.2s ease;
         }
-        .cta-button:hover {
+
+        .btn-primary {
+            background: #6366f1;
+            color: white;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid var(--border-card);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
     </style>
@@ -65,32 +164,45 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🧠 Face Recognition System</h1>
-            <p>Advanced Computer Vision for Face Detection and Recognition</p>
+            <div class="badge">VISION INTELLIGENCE</div>
+            <h1>Face Recognition System</h1>
+            <p>High-precision facial localization, deep 128D embedding extraction, and real-time biometric identity matching.</p>
         </div>
         
         <div class="features">
             <div class="feature-card">
-                <h3>🔍 Face Detection</h3>
-                <p>Detect multiple faces in images and video streams with high accuracy</p>
+                <div class="feature-icon">🔍</div>
+                <h3>Face Detection</h3>
+                <p>Locate all facial bounding boxes within input images using HOG / CNN feature detectors.</p>
+                <a href="/detect-faces" class="card-link">Launch Detection →</a>
             </div>
             <div class="feature-card">
-                <h3>👤 Face Recognition</h3>
-                <p>Identify individuals by comparing faces with known database</p>
+                <div class="feature-icon">👤</div>
+                <h3>Identity Recognition</h3>
+                <p>Compare detected facial features against enrolled person profiles with distance thresholding.</p>
+                <a href="/recognize-faces" class="card-link">Launch Recognition →</a>
             </div>
             <div class="feature-card">
-                <h3>📹 Real-time Processing</h3>
-                <p>Live face recognition using webcam with optimized performance</p>
+                <div class="feature-icon">➕</div>
+                <h3>Profile Enrollment</h3>
+                <p>Register new subjects and build persistent 128D facial vector representations.</p>
+                <a href="/train" class="card-link">Enroll Person →</a>
             </div>
         </div>
 
-        <div>
-            <button class="cta-button" onclick="alert('Feature coming soon!')">
-                🎥 Start Webcam
-            </button>
-            <button class="cta-button" onclick="alert('Feature coming soon!')">
-                📸 Upload Image
-            </button>
+        <div class="cta-container">
+            <a href="/detect-faces" class="cta-button btn-primary">
+                📸 Detect Faces
+            </a>
+            <a href="/recognize-faces" class="cta-button btn-primary" style="background: #8b5cf6;">
+                🔍 Recognize Faces
+            </a>
+            <a href="/train" class="cta-button btn-secondary">
+                ➕ Enroll Profile
+            </a>
+            <a href="/about" class="cta-button btn-secondary">
+                ℹ️ About Project
+            </a>
         </div>
     </div>
 </body>
